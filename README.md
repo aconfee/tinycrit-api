@@ -1,4 +1,4 @@
-https://circleci.com/gh/:aconfee/:repo.png?circle-token=:circle-token
+[![CircleCI](https://circleci.com/gh/aconfee/tinycrit-web.svg?style=svg)](https://circleci.com/gh/aconfee/tinycrit-web)
 
 ## TinyCrit
 
