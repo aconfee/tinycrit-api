@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/aconfee/tinycrit-web.svg?style=svg)](https://circleci.com/gh/aconfee/tinycrit-web)
+[![CircleCI](https://circleci.com/gh/aconfee/tinycrit-api.svg?style=svg)](https://circleci.com/gh/aconfee/tinycrit-api)
 
 ## TinyCrit
 
