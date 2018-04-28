@@ -6,8 +6,6 @@
 ### Description
 Super secret.
 
-## Development
-
 ### Setup
 
 Assuming you're starting from scratch, here's how to set everything up for development. 
@@ -16,7 +14,7 @@ Assuming you're starting from scratch, here's how to set everything up for devel
 3. Happy developing! 
 
 ### Stack
-* Node / Express (generated from Express generator [https://expressjs.com/en/starter/generator.html])
+* Node / Express (generated from Express generator https://expressjs.com/en/starter/generator.html)
 
 ### Environment and Workflow
 * `npm start` to start running on port 8080.
@@ -32,7 +30,7 @@ Currently, no building is necessary.
 
 Simply push to, or merge a commit to the master branch. 
 
-This repo is being watched by CircleCI [https://circleci.com/gh/aconfee/tinycrit-api]. It will be deployed to the tinycrit-prod Elastic Beanstalk environment and live on www.tinycrit.com. 
+This repo is being watched by CircleCI https://circleci.com/gh/aconfee/tinycrit-api. It will be deployed to the tinycrit-prod Elastic Beanstalk environment and live on api.tinycrit.com. 
 
 ### Architecture
 * Served on Elastic Beanstalk
