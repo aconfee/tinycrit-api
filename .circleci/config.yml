@@ -65,8 +65,8 @@ jobs:
           working_directory: /
           name: Make AWS config
           command: | 
-            mkdir .aws
-            printf "[eb_cli]\n${AWS_ACCESS_KEY_ID}\n${AWS_SECRET_ACCESS_KEY}" > .aws/config
+            sudo mkdir .aws
+            sudo printf "[eb_cli]\n${AWS_ACCESS_KEY_ID}\n${AWS_SECRET_ACCESS_KEY}" > .aws/config
 
       - run: 
           working_directory: /.aws
