@@ -61,17 +61,17 @@ jobs:
             sudo apt-get install python-pip python-dev build-essential
             sudo pip install awsebcli --upgrade
 
-      - run: 
-          working_directory: /
-          name: Make AWS config
-          command: | 
-            sudo mkdir .aws
-            sudo printf "[eb_cli]\n${AWS_ACCESS_KEY_ID}\n${AWS_SECRET_ACCESS_KEY}" > .aws/config
+      # - run: 
+      #     working_directory: /
+      #     name: Make AWS config
+      #     command: | 
+      #       sudo mkdir .aws
+      #       sudo printf "[eb_cli]\n${AWS_ACCESS_KEY_ID}\n${AWS_SECRET_ACCESS_KEY}" > .aws/config
 
-      - run: 
-          working_directory: /.aws
-          name: Debug file created
-          command: ls
+      # - run: 
+      #     working_directory: /.aws
+      #     name: Debug file created
+      #     command: ls
 
       - run: 
           name: Deploy to Elastic Beanstalk
