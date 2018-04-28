@@ -57,18 +57,13 @@ jobs:
             sudo apt-get install python-pip python-dev build-essential
             sudo pip install awsebcli --upgrade
 
-      # - run:
-      #     name: Install AWS CLI
-      #     command: sudo apt-get -y -qq install awscli
+      - run:
+          name: Debug git uncommitted changes
+          command: git status
 
       - run: 
           name: Deploy to Elastic Beanstalk
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              eb deploy tinycrit-prod
-            #else 
-            #  aws --region us-west-2 s3 sync dist s3://dev.tinycrit.com --delete
-            fi
+          command: eb deploy tinycrit-prod
 
 workflows:
   version: 2
