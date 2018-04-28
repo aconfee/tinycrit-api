@@ -50,8 +50,16 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: Install AWS CLI
-          command: sudo apt-get -y -qq install awscli
+          name: Installing deployment dependencies
+          working_directory: /
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt-get install python-pip python-dev build-essential
+            sudo pip install awsebcli --upgrade
+
+      # - run:
+      #     name: Install AWS CLI
+      #     command: sudo apt-get -y -qq install awscli
 
       - run: 
           name: Deploy to Elastic Beanstalk
