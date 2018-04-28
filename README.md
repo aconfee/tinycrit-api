@@ -19,8 +19,17 @@ Assuming you're starting from scratch, here's how to set everything up for devel
 ### Environment and Workflow
 * `npm start` to start running on port 8080.
 * `npm test` to run all unit tests.
-* .vscode/launch.json included with VS Code defaults.
-* Currently there's no branching strategy and only one environment -- the production environment. Just develop on master and deploy to prod. 
+* .vscode/launch.json included with VS Code defaults.### Git branching
+
+### Git branching
+
+* Checkout `develop` branch. 
+* Branch your feature off of develop. 
+* After feature is tested locally, create a pull request. 
+* Pull request must be approved and have all CI checks passing before it can merge. (This is enforced automatically.)
+* Merge feature to develp when conditions met.
+* Develop will be merged to master (which is live) when develop's build and deploy status is good (enforced), and the develop environment, dev.tinycrit.com, is manually tested. 
+* Merging with dev and master will automatically deploy to each respective environment. 
 
 ### Build
 
