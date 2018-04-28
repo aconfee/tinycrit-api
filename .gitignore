@@ -62,8 +62,8 @@ typings/
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
+!.elasticbeanstalk/config.yml
 !.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.config.yml
 !.elasticbeanstalk/*.global.yml
 
 # misc
