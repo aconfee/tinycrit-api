@@ -46,8 +46,12 @@ jobs:
           name: Show current branch
           command: echo ${CIRCLE_BRANCH}
 
-      #- restore_cache:
-      #    key: v1-dependencies-{{ checksum "package.json" }}
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Stage node modules
+          command: git add .
 
       - run:
           name: Installing deployment dependencies
@@ -63,7 +67,7 @@ jobs:
 
       - run: 
           name: Deploy to Elastic Beanstalk
-          command: eb deploy tinycrit-prod
+          command: eb deploy --staged --verbose tinycrit-prod
 
 workflows:
   version: 2
