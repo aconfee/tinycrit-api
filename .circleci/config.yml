@@ -46,8 +46,8 @@ jobs:
           name: Show current branch
           command: echo ${CIRCLE_BRANCH}
 
-      - restore_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
+      #- restore_cache:
+      #    key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
           name: Installing deployment dependencies
@@ -57,9 +57,9 @@ jobs:
             sudo apt-get install python-pip python-dev build-essential
             sudo pip install awsebcli --upgrade
 
-      - run:
-          name: Debug git uncommitted changes
-          command: git status
+      - run: 
+          name: Debug working dir
+          command: ls
 
       - run: 
           name: Deploy to Elastic Beanstalk
