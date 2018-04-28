@@ -31,7 +31,7 @@ jobs:
       # run tests!
       - run: 
         name: Run tests
-        command: npm test
+        command: npm run test
 
   deploy:
     working_directory: ~/repo
@@ -40,6 +40,8 @@ jobs:
       - image: circleci/node:8.11.1-stretch
 
     steps: 
+      - checkout
+
       - run: 
           name: Show current branch
           command: echo ${CIRCLE_BRANCH}
