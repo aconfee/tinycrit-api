@@ -62,8 +62,12 @@ jobs:
             sudo pip install awsebcli --upgrade
 
       - run: 
-          name: Debug working dir
-          command: ls
+          name: Debug aws config
+          command: echo < ~/.aws/config
+
+      - run: 
+          name: Debug aws cred
+          command: echo < ~/.aws/credentials
 
       - run: 
           name: Deploy to Elastic Beanstalk
