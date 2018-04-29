@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha ./**/*.test.js --reporter nyan"
+    "test": "mocha ./**/*.test.js"
   },
   "dependencies": {
     "chai": "^4.1.2",
