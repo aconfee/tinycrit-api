@@ -23,7 +23,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
 
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+app.use('/graphql', bodyParser.json(), graphqlExpress({ 
+  schema,
+  cacheControl: true 
+}));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 app.use('/', indexRouter);
 
