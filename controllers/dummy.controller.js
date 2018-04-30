@@ -3,8 +3,8 @@
 const dummyService = require('../services/dummy.service.js');
 
 module.exports.dummyMessage = (req, res, next) => {
-    const message = dummyService.dummyMessage();
+    const obj = dummyService.dummyMessage();
 
     res.status(200);
-    res.json({ message: message });
+    res.json({ message: obj.message });
 };

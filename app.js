@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const bodyParser = require('body-parser');
-const schema =  require('./data/schema');
+const schema =  require('./graphql/schema');
 
 var cors = require('cors');
 var corsOptions = {
@@ -24,8 +24,7 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 
 app.use('/graphql', bodyParser.json(), graphqlExpress({ 
-  schema,
-  cacheControl: true 
+  schema
 }));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 app.use('/', indexRouter);

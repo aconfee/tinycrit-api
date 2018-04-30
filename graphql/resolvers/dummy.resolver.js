@@ -1,4 +1,4 @@
-const dummyService = require('../services/dummy.service.js');
+const dummyService = require('../../services/dummy.service.js');
 
 const dummyResolver = {
     Query: {
