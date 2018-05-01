@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+const bodyParser = require('body-parser');
+const schema =  require('./graphql/schema');
 
 var cors = require('cors');
 var corsOptions = {
@@ -19,6 +22,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
+
+app.use('/graphql', bodyParser.json(), graphqlExpress({ 
+  schema
+}));
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
