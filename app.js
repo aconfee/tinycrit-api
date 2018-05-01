@@ -9,7 +9,7 @@ const schema =  require('./graphql/schema');
 
 var cors = require('cors');
 var corsOptions = {
-  origin: ['http://localhost:3000', 'http://tinycrit.com', 'http://www.tinycrit.com'],
+  origin: ['http://localhost:3000', 'http://tinycrit.com', 'http://www.tinycrit.com', 'http://staging.tinycrit.com', 'http://www.staging.tinycrit.com'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
 }
 
