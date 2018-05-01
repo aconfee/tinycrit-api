@@ -10,7 +10,7 @@ describe('Dummy service', () => {
 
             assert.isNotNull(obj);
             assert.isNotNull(obj.message)
-            assert.equal(obj.message, 'Dummy api endpoint.');
+            assert.equal(obj.message, 'Dummy api endpoint wow.');
         })
     });
     
