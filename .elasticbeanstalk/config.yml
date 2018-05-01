@@ -1,6 +1,8 @@
 branch-defaults:
   master:
     environment: tinycrit-prod
+  staging:
+    environmtent: tinycrit-staging
 global:
   application_name: tinycrit-api
   default_ec2_keyname: null
