@@ -15,7 +15,7 @@ describe('/dummy', () => {
                 assert.isNotNull(res);
                 assert.equal(res.status, 200);
                 assert.isNotNull(res.body.message);
-                assert.equal(res.body.message, 'Dummy api endpoint.');
+                assert.equal(res.body.message, 'Dummy api endpoint wow.');
 
                 done();
             })
