@@ -1,11 +1,15 @@
-const dummyService = require('../../services/dummy.service.js');
 
-const dummyResolver = {
-    Query: {
-        dummy() {
-            const result = dummyService.dummyMessage();
-            
-            return { message: result.message };
+// TOOD: Ghetto DI. Typescript (interfaces) will help this.
+// Then at least resolvers act just like controllers or command handlers
+// that can change implementation.
+const dummyResolver = (service) => {
+    return {
+        Query: {
+            dummy() {
+                const result = service.dummyMessage();
+                
+                return { message: result.message };
+            }
         }
     }
 }
