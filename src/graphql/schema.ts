@@ -1,7 +1,7 @@
 import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import dummyResolver from'./resolvers/dummy.resolver';
 import dummyTypedef from './types/dummy.type';
-import { DummyService } from '../services/dummy.service';
+import DummyService from '../services/dummy.service';
 
 const queries = `
 type Query {

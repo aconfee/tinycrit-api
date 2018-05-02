@@ -1,11 +1,11 @@
-import { DummyService, Dummy } from "../../services/dummy.service";
+import DummyService, { Dummy, IDummyService } from "../../services/dummy.service";
 
-const dummyResolver = (service: DummyService): any => {
+const dummyResolver = (service: IDummyService): any => {
 
     return {
         Query: {
             dummy() {
-                const result: Dummy = service.dummyMessage();
+                const result: Dummy = service.findDummy();
                 
                 return result;
             }
