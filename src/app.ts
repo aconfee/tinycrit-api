@@ -1,19 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const bodyParser = require('body-parser');
-const schema =  require('./graphql/schema');
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import bodyParser from 'body-parser';
+import schema from'./graphql/schema';
+import routes from './routes/index';
 
 var cors = require('cors');
 var corsOptions = {
   origin: ['http://localhost:3000', 'http://tinycrit.com', 'http://www.tinycrit.com', 'http://staging.tinycrit.com', 'http://www.staging.tinycrit.com'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
 }
-
-var indexRouter = require('./routes/index');
 
 var app = express();
 
@@ -27,7 +26,7 @@ app.use('/graphql', bodyParser.json(), graphqlExpress({
   schema
 }));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
-app.use('/', indexRouter);
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

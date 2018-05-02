@@ -1,4 +1,4 @@
-const { makeExecutableSchema, addMockFunctionsToSchema } = require('graphql-tools');
+import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 import dummyResolver from'./resolvers/dummy.resolver';
 import dummyTypedef from './types/dummy.type';
 import { DummyService } from '../services/dummy.service';
@@ -19,4 +19,4 @@ const resolvers = (<any>Object).assign({},
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
-module.exports = schema;
+export default schema;

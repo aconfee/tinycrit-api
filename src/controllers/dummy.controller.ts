@@ -1,9 +1,10 @@
-const dummyService = require('../services/dummy.service.js');
+import { dummyServiceSingleton } from '../services/dummy.service';
 
-module.exports.dummyMessage = (req: any, res: any, next: any) => {
-    const obj: any = dummyService.dummyMessage();
-    const message: string = obj.message;
+const dummyMessage = (req: any, res: any, next: any) => {
+    const obj = dummyServiceSingleton.dummyMessage();
 
     res.status(200);
-    res.json({ message });
+    res.json({ message: obj.message });
 };
+
+export default dummyMessage;
