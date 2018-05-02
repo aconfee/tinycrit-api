@@ -4,7 +4,7 @@ const dummyResolver = (service: IDummyService): any => {
 
     return {
         Query: {
-            dummy() {
+            dummy(): Dummy {
                 const result: Dummy = service.findDummy();
                 
                 return result;
