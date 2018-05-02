@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const bodyParser = require('body-parser');
-const schema =  require('./src/graphql/schema');
+const schema =  require('./graphql/schema');
 
 var cors = require('cors');
 var corsOptions = {
@@ -13,7 +13,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
 }
 
-var indexRouter = require('./src/routes/index');
+var indexRouter = require('./routes/index');
 
 var app = express();
 
@@ -44,4 +44,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-module.exports = app; 
+export default app; 

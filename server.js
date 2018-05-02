@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../src/app');
+var app = require('./src/app');
 var debug = require('debug')('tinycrit-api:server');
 var http = require('http');
 

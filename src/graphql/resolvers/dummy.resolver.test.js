@@ -1,7 +1,7 @@
 const chai = require('chai');
 const assert = chai.assert;
 const sinon = require('sinon');
-const dummyResolver = require('./dummy.resolver.js');
+const dummyResolver = require('./dummy.resolver.ts');
 
 describe('Dummy resolver', () => {
 

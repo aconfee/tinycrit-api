@@ -1,6 +1,6 @@
 const chai = require('chai');
 const assert = chai.assert;
-const service = require('./dummy.service.js');
+const service = require('./dummy.service.ts');
 
 describe('Dummy service', () => {
 

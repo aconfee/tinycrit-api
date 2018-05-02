@@ -1,15 +1,9 @@
-import { dummyMessage } from '../services/dummy.service.js';
+const dummyService = require('../services/dummy.service.js');
 
-class Dummy {
-    message: string
-}
-
-const dummy = (req: any, res: any, next: any) => {
-    const dummy: Dummy = new Dummy();
-    dummy.message = dummyMessage().message;
+module.exports.dummyMessage = (req: any, res: any, next: any) => {
+    const obj: any = dummyService.dummyMessage();
+    const message: string = obj.message;
 
     res.status(200);
-    res.json({ message: dummy.message });
+    res.json({ message });
 };
-
-export default dummy;
