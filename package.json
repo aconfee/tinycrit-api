@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./server.js",
-    "start-dev": "tsc && node ./server.js",
-    "test": "tsc && mocha --recursive ts-node/register ./src/graphql ./src/controllers ./src/services",
+    "dev": "ts-node ./server.ts",
+    "test": "mocha --recursive ts-node/register ./src/graphql ./src/controllers ./src/services",
     "build": "gulp"
   },
   "dependencies": {
