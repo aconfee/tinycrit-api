@@ -15,9 +15,9 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v2-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          - v2-dependencies-
 
       - run: 
           name: Install npm
@@ -26,12 +26,30 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v2-dependencies-{{ checksum "package.json" }}
         
       # run tests!
       - run: 
           name: Run tests
           command: npm run test
+
+      - run: 
+          name: Build
+          command: npm run build
+
+      - save_cache:
+          key: v2-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - build
+
+      # Save files needed for EB deploy
+      - save_cache:
+          paths:
+            - package.json
+            - .elasticbeanstalk
+            - .ebextensions
+            - .git
+          key: v2-deploy-scripts
 
   deploy:
     working_directory: ~/repo
@@ -40,14 +58,34 @@ jobs:
       - image: circleci/node:8.11.1-stretch
 
     steps: 
-      - checkout
 
       - run: 
           name: Show current branch
           command: echo ${CIRCLE_BRANCH}
 
+      # Restore the build/dist folder
       - restore_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v2-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+
+      # Restore EB deploy configs
+      - restore_cache:
+          key: v2-deploy-scripts
+
+      # Restore or install production node modules
+      - restore_cache:
+          keys:
+          - v2-production-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v2-production-dependencies-
+
+      - run: 
+          name: Install npm
+          command: npm install --production
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-production-dependencies-{{ checksum "package.json" }}
 
       - run:
           name: Stage node modules

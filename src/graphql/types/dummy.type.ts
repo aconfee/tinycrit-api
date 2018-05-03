@@ -4,4 +4,4 @@ type Dummy {
 }
 `;
 
-module.exports = typeDefs;
+export default typeDefs;
