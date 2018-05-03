@@ -1,8 +1,8 @@
-const chai = require('chai');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import app from '../app';
 const assert = chai.assert;
-const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
-const app = require('../app.js');
 
 describe('/dummy', () => {
 
