@@ -87,17 +87,9 @@ jobs:
             - node_modules
           key: v1-production-dependencies-{{ checksum "package.json" }}
 
-      - run: 
-          name: Debug dir
-          command: ls
-
       - run:
           name: Stage node modules
           command: git add .
-
-      - run: 
-          name: Debug staged
-          command: git status
 
       - run:
           name: Installing deployment dependencies
@@ -114,8 +106,6 @@ jobs:
               eb deploy --staged tinycrit-prod
             elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
               eb deploy --staged tinycrit-staging
-            elif [ "${CIRCLE_BRANCH}" == "addTypescript" ]; then 
-              echo "Made it to deploy!"
             fi
 
 workflows:
@@ -131,4 +121,3 @@ workflows:
               only:
                 - master
                 - staging
-                - addTypescript
