@@ -1,6 +1,4 @@
-export class Dummy {
-    message: string; 
-}
+import Dummy from './models/Dummy.model';
 
 export interface IDummyService {
     findDummy(): Dummy

@@ -1,4 +1,5 @@
-import DummyService, { Dummy, IDummyService } from "../../services/dummy.service";
+import DummyService, { IDummyService } from "../../services/dummy.service";
+import Dummy from '../../services/models/Dummy.model';
 
 const dummyResolver = (service: IDummyService): any => {
 
