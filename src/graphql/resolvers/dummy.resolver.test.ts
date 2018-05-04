@@ -1,11 +1,13 @@
 import chai from 'chai';
 import sinon from 'sinon';
 import dummyResolver from './dummy.resolver';
-import { IDummyService, Dummy } from '../../services/dummy.service';
+import { IDummyService } from '../../services/dummy.service';
+import Dummy from '../../services/models/dummy.model';
 const assert = chai.assert;
 
 class MockDummyService implements IDummyService {
     findDummy = null;
+    findDummySql = null;
 };
 
 describe('Dummy resolver', () => {
@@ -15,7 +17,7 @@ describe('Dummy resolver', () => {
 
             const stub = sinon.stub().returns({message: 'Aww yiss'})
             const mockDummyService = new MockDummyService();
-            mockDummyService.findDummy = stub;
+            mockDummyService.findDummySql = stub;
 
             const resolver = dummyResolver(mockDummyService);
             var result: Dummy = resolver.Query.dummy();

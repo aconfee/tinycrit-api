@@ -7,6 +7,7 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import schema from'./graphql/schema';
 import routes from './routes/index';
+require('dotenv').config()
 
 var cors = require('cors');
 var corsOptions = {
