@@ -15,9 +15,9 @@ jobs:
 
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "package.json" }}
+          - v3-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
-          - v2-dependencies-
+          - v3-dependencies-
 
       - run: 
           name: Install npm
@@ -26,7 +26,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v2-dependencies-{{ checksum "package.json" }}
+          key: v3-dependencies-{{ checksum "package.json" }}
         
       # run tests!
       - run: 
@@ -38,7 +38,7 @@ jobs:
           command: npm run build
 
       - save_cache:
-          key: v2-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
+          key: v3-dist-{{ .Environment.CIRCLE_BRANCH}}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - build
 
@@ -49,7 +49,7 @@ jobs:
             - .elasticbeanstalk
             - .ebextensions
             - .git
-          key: v2-deploy-scripts
+          key: v3-deploy-scripts
 
   deploy:
     working_directory: ~/repo
@@ -65,18 +65,18 @@ jobs:
 
       # Restore the build/dist folder
       - restore_cache:
-          key: v2-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          key: v3-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
 
       # Restore EB deploy configs
       - restore_cache:
-          key: v2-deploy-scripts
+          key: v3-deploy-scripts
 
       # Restore or install production node modules
       - restore_cache:
           keys:
-          - v2-production-dependencies-{{ checksum "package.json" }}
+          - v3-production-dependencies-{{ checksum "package.json" }}
           # fallback to using the latest cache if no exact match is found
-          - v2-production-dependencies-
+          - v3-production-dependencies-
 
       - run: 
           name: Install npm
@@ -85,7 +85,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v2-production-dependencies-{{ checksum "package.json" }}
+          key: v3-production-dependencies-{{ checksum "package.json" }}
 
       - run:
           name: Stage node modules
