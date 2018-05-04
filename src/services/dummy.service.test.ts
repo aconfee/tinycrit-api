@@ -1,6 +1,6 @@
 import chai from 'chai';
 import DummyService, { IDummyService } from './dummy.service';
-import Dummy from './models/dummy';
+import Dummy from './models/dummy.model';
 import SequelizeMock from 'sequelize-mock';
 const dbMock = new SequelizeMock();
 const assert = chai.assert;
