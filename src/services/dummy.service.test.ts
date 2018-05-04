@@ -10,7 +10,7 @@ describe('Dummy service', () => {
     const MockDummyDao = dbMock.define('dummy');
 
     describe('Dummy message', () => {
-        it('Can get the message.', () => {
+        it('Can get the message.', (done) => {
 
             MockDummyDao.$queueResult(MockDummyDao.build({
                 id: 1,
@@ -18,15 +18,38 @@ describe('Dummy service', () => {
             }));
 
             const service = new DummyService(MockDummyDao);
-            service.findDummySql().then((result: Dummy) => {
+            const id = 1;
+            service.findDummySql(id).then((result: Dummy) => {
                 assert.isNotNull(result);
                 assert.isNotNull(result.message);
                 assert.equal(result.message, 'Test message.');
 
                 MockDummyDao.$clearQueue();
+
+                done();
             });
 
-        })
+        });
+
+        // TODO: Need to return a null (not mock object) to be consistent with sqlize and test properly. 
+        it.skip('Can fail.', (done) => {
+
+            // MockDummyDao.$useHandler((query) => {
+            //     if(query === 'findById') {
+            //         return null;
+            //     };
+            // });
+
+            // const service = new DummyService(MockDummyDao);
+            // const id = 2;
+            // service.findDummySql(id).then((result: Dummy) => {
+            //     assert.isNull(result);
+
+            //     MockDummyDao.$clearQueue();
+            //     done();
+            // });
+
+        });
     });
     
 });
