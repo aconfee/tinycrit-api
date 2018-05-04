@@ -1,7 +1,7 @@
-const typeDefs = `
+const dummyTypedef = `
 type Dummy {
   message: String
 }
 `;
 
-export default typeDefs;
+export default dummyTypedef;
