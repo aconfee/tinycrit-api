@@ -2,7 +2,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 import dummyResolver from './dummy.resolver';
 import { IDummyService } from '../../services/dummy.service';
-import Dummy from '../../services/models/dummy';
+import Dummy from '../../services/models/dummy.model';
 const assert = chai.assert;
 
 class MockDummyService implements IDummyService {
