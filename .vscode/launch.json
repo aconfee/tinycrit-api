@@ -7,8 +7,9 @@
         {
             "type": "node",
             "request": "launch",
+            "runtimeArgs": ["-r", "ts-node/register"],
             "name": "Launch Program",
-            "program": "${workspaceFolder}/bin/www"            
+            "program": "${workspaceFolder}/server.ts"            
         }
     ]
 }

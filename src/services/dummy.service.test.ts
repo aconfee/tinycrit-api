@@ -1,5 +1,6 @@
 import chai from 'chai';
-import DummyService, { Dummy } from './dummy.service';
+import DummyService from './dummy.service';
+import Dummy from './models/dummy';
 const assert = chai.assert;
 
 describe('Dummy service', () => {
