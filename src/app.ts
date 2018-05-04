@@ -6,7 +6,7 @@ import logger from 'morgan';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import bodyParser from 'body-parser';
 import schema from'./graphql/schema';
-import routes from './routes/index';
+import routes from './rest/routes';
 require('dotenv').config()
 
 var cors = require('cors');
