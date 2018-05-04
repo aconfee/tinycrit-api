@@ -1,4 +1,4 @@
-import Dummy from './models/dummy';
+import Dummy from './models/dummy.model';
 import DummyDao from '../data/dummy.dao';
 import Bluebird from 'bluebird'; // Promise library for Sequelize
 import Sequelize from 'sequelize';
