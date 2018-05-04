@@ -15,7 +15,7 @@ const typeDefs = queries.concat(
 );
 
 const resolvers = (<any>Object).assign({}, 
-  dummyResolver(new DummyService(new DummyDao())
+  dummyResolver(new DummyService(DummyDao)
 ));
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });

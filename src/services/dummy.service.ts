@@ -1,36 +1,44 @@
 import Dummy from './models/dummy';
-//import { IDummyDao } from '../data/dummy.dao';
 import DummyDao from '../data/dummy.dao';
-import Bluebird from 'sequelize';
+import Bluebird from 'bluebird'; // Promise library for Sequelize
+import Sequelize from 'sequelize';
+
 
 export interface IDummyService {
     findDummy(): Dummy
     findDummySql(): any;
 };
 
+/**
+ * Dummy
+ */
 class DummyService implements IDummyService {
 
-    // TODO change from any to Bluebird<Dummy> (do i need to install bluebird and types?)
-    public findDummySql = (): any => {
+    private dummyDao: Sequelize.Model<{}, {}> = null;
 
-        // Clean to use async/await instead.. possibly. 
-        return DummyDao.findById(1)
-            .then((dummy: any) => {
-                var newDummy = new Dummy();
-                newDummy.message = dummy.get('message');
-
-                return newDummy;
-            })
-            .catch((error: any) => {
-                console.error(error);
-            });
+    constructor(dummyDao: Sequelize.Model<{}, {}>) {
+        this.dummyDao = dummyDao;
     };
 
-    public findDummy = (): Dummy => {
-        var dummy = new Dummy();
-        dummy.message = 'Dummy api endpoint wow.';
+    /**
+     * Get a dummy from the posgres RDS instance.
+     * 
+     * @return {Bluebird<void | Dummy} A promise whos contents is the dummy with the provided id.
+     */
+    public findDummySql = async (): Bluebird<void | Dummy> => {
+        const dummyRow: any = await this.dummyDao.findById(1)
+            .catch((e) => { console.error(e); });
 
-        return dummy;
+        return new Dummy(dummyRow.get('message'));
+    };
+
+    /**
+     * Fake data dummy.
+     * 
+     * @returns {Dummy} A dummy initialized with a hard-coded string.
+     */
+    public findDummy = (): Dummy => {
+        return new Dummy('Dummy api endpoint wow.');
     };
 
 };
