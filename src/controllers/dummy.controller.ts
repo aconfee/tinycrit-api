@@ -1,12 +1,13 @@
-import DummyService, { Dummy } from '../services/dummy.service';
+import DummyService from '../services/dummy.service';
+import Dummy from '../services/models/dummy.model';
+import DummyDao from '../data/dummy.dao';
 import { Response, Request } from 'express';
 
 const getDummy = (req: Request, res: Response, next: any) => {
 
-    // DI is not set up for controllers since using GraphQL and will likely depricate this.
-    const dummyService = new DummyService();
-
-    const dummy: Dummy = dummyService.findDummy();
+    // Injecting DummyDao, but method under test doesn't actually connect to db. 
+    const service = new DummyService(DummyDao);
+    const dummy: Dummy = service.findDummy();
 
     if(!dummy){
         res.status(500);
